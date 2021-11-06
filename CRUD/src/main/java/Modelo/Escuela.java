@@ -11,16 +11,16 @@ package Modelo;
  */
 public class Escuela {
     private String id;
-    private Municipio municipio;
-    private Ubicacion ubicacion;
-    private Nivel nivel;
-    private Horario horario;
-    private Role role;
-    private Estatuto estatuto;
-    private Genero genero;
-    private Lengua lengua;
-    private Apertura apertura;
-    private Estado estado;
+    private String municipio;
+    private String ubicacion;
+    private String nivel;
+    private String horario;
+    private String role;
+    private String estatuto;
+    private String genero;
+    private String lengua;
+    private String apertura;
+    private String estado;
     private String escuela;
 
     public Escuela() {
@@ -34,83 +34,83 @@ public class Escuela {
         this.id = id;
     }
 
-    public Municipio getMunicipio() {
+    public String getMunicipio() {
         return municipio;
     }
 
-    public void setMunicipio(Municipio municipio) {
+    public void setMunicipio(String municipio) {
         this.municipio = municipio;
     }
 
-    public Ubicacion getUbicacion() {
+    public String getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(Ubicacion ubicacion) {
+    public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
 
-    public Nivel getNivel() {
+    public String getNivel() {
         return nivel;
     }
 
-    public void setNivel(Nivel nivel) {
+    public void setNivel(String nivel) {
         this.nivel = nivel;
     }
 
-    public Horario getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Horario horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public Estatuto getEstatuto() {
+    public String getEstatuto() {
         return estatuto;
     }
 
-    public void setEstatuto(Estatuto estatuto) {
+    public void setEstatuto(String estatuto) {
         this.estatuto = estatuto;
     }
 
-    public Genero getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
-    public Lengua getLengua() {
+    public String getLengua() {
         return lengua;
     }
 
-    public void setLengua(Lengua lengua) {
+    public void setLengua(String lengua) {
         this.lengua = lengua;
     }
 
-    public Apertura getApertura() {
+    public String getApertura() {
         return apertura;
     }
 
-    public void setApertura(Apertura apertura) {
+    public void setApertura(String apertura) {
         this.apertura = apertura;
     }
 
-    public Estado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

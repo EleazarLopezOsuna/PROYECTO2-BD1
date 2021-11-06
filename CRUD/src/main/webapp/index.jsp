@@ -16,7 +16,7 @@
         <div class="container mx-auto" style="margin-top: 14%">
             <div class="row">
                 <div class="col-sm">
-                    <form action="Sesiones">
+                    <form action="Controller">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">

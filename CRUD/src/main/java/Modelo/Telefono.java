@@ -10,7 +10,31 @@ package Modelo;
  * @author jared
  */
 public class Telefono {
-    private String id;
-    private Establecimiento establecimiento;
+    private String codigo;
+    private String establecimiento;
     private String telefono;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(String establecimiento) {
+        this.establecimiento = establecimiento;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 }

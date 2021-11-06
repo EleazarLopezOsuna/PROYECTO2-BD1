@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Direccion {
     private String id;
-    private Establecimiento establecimiento;
+    private String establecimiento;
     private String avenida;
     private String calle;
     private String casa;
@@ -26,11 +26,11 @@ public class Direccion {
         this.id = id;
     }
 
-    public Establecimiento getEstablecimiento() {
+    public String getEstablecimiento() {
         return establecimiento;
     }
 
-    public void setEstablecimiento(Establecimiento establecimiento) {
+    public void setEstablecimiento(String establecimiento) {
         this.establecimiento = establecimiento;
     }
 

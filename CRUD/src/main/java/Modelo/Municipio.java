@@ -12,16 +12,16 @@ package Modelo;
 public class Municipio {
     private String codigo;
     private String nombre;
-    private Departamento departamento;
+    private String departamento;
 
     public Municipio() {
     }
 
-    public Departamento getDepartamento() {
+    public String getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
+    public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
 
@@ -32,6 +32,7 @@ public class Municipio {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
 
     public String getNombre() {
         return nombre;

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Establecimiento {
     private String id;
-    private Escuela escuela;
+    private String escuela;
     private String nombre;
     private String latlones_2;
     private String latlones_3;
@@ -29,11 +29,11 @@ public class Establecimiento {
         this.id = id;
     }
 
-    public Escuela getEscuela() {
+    public String getEscuela() {
         return escuela;
     }
 
-    public void setEscuela(Escuela escuela) {
+    public void setEscuela(String escuela) {
         this.escuela = escuela;
     }
 
