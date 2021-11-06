@@ -59,7 +59,7 @@
                     <a class="btn btn-primary form-control" href="Controller?accion=Telefono">Ver Telefonos</a>
                 </td>
                 <td>
-                    <a class="btn btn-primary form-control" href="Controller?accion=Direccion">Ver Ubicaciones</a>
+                    <a class="btn btn-primary form-control" href="Controller?accion=Ubicacion">Ver Ubicaciones</a>
                 </td>
             </tr>
         </table>

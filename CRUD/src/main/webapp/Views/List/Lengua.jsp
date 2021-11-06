@@ -59,7 +59,7 @@
                     <a class="btn btn-primary form-control" href="Controller?accion=Telefono">Ver Telefonos</a>
                 </td>
                 <td>
-                    <a class="btn btn-primary form-control" href="Controller?accion=Direccion">Ver Ubicaciones</a>
+                    <a class="btn btn-primary form-control" href="Controller?accion=Ubicacion">Ver Ubicaciones</a>
                 </td>
             </tr>
         </table>
@@ -98,7 +98,7 @@
                             <form action="Controller">
                                 <tr>
                                     <th><input class="form-control" type="text" value="<%= lengua.getCodigo()%>" disabled></th>
-                                    <th><input class="form-control" type="hidden" name="codigo" value="<%= lengua.getCodigo()%>"></th>
+                                    <input class="form-control" type="hidden" name="codigo" value="<%= lengua.getCodigo()%>">
                                     <th><input class="form-control" type="text" name="nombre" value="<%= lengua.getNombre()%>" required></th>
                                     <th><input class="btn btn-primary form-control" type="submit" name="accion" value="Editar Lengua"></th>
                                 </tr>

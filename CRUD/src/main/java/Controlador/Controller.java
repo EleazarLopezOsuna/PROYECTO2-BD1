@@ -156,17 +156,147 @@ public class Controller extends HttpServlet {
         } else if (action.equals("Estado")) {
             obtenerEstados();
             acceso = direcciones[7];
+        } else if (action.equals("Agregar Estado")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Estado(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstados();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[7];
+        } else if (action.equals("Editar Estado")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Estado SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstados();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[7];
         } else if (action.equals("Estatuto")) {
             obtenerEstatutos();
+            acceso = direcciones[8];
+        } else if (action.equals("Agregar Estatuto")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Estatuto(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstatutos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[8];
+        } else if (action.equals("Editar Estatuto")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Estatuto SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstatutos();
+            } catch (SQLException e) {
+
+            }
             acceso = direcciones[8];
         } else if (action.equals("Genero")) {
             obtenerGeneros();
             acceso = direcciones[9];
+        } else if (action.equals("Agregar Genero")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Genero(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerGeneros();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[9];
+        } else if (action.equals("Editar Genero")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Genero SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerGeneros();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[9];
         } else if (action.equals("Horario")) {
             obtenerHorarios();
             acceso = direcciones[10];
+        } else if (action.equals("Agregar Horario")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Horario(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerHorarios();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[10];
+        } else if (action.equals("Editar Horario")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Horario SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerHorarios();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[10];
         } else if (action.equals("Lengua")) {
             obtenerLenguas();
+            acceso = direcciones[11];
+        } else if (action.equals("Agregar Lengua")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Lengua(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerLenguas();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[11];
+        } else if (action.equals("Editar Lengua")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Lengua SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerLenguas();
+            } catch (SQLException e) {
+
+            }
             acceso = direcciones[11];
         } else if (action.equals("Municipio")) {
             obtenerMunicipios();
@@ -174,14 +304,136 @@ public class Controller extends HttpServlet {
         } else if (action.equals("Nivel")) {
             obtenerNiveles();
             acceso = direcciones[13];
+        } else if (action.equals("Agregar Nivel")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Nivel(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerNiveles();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[13];
+        } else if (action.equals("Editar Nivel")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Nivel SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerNiveles();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[13];
         } else if (action.equals("Role")) {
             obtenerRoles();
+            acceso = direcciones[14];
+        } else if (action.equals("Agregar Role")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Role(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerRoles();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[14];
+        } else if (action.equals("Editar Role")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Role SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerRoles();
+            } catch (SQLException e) {
+
+            }
             acceso = direcciones[14];
         } else if (action.equals("Telefono")) {
             obtenerTelefonos();
             acceso = direcciones[15];
+        } else if (action.equals("Agregar Telefono")) {
+            String establecimiento = request.getParameter("establecimiento");
+            String telefono = request.getParameter("telefono");
+            sql = "INSERT INTO Telefono(establecimiento, telefono) VALUES("
+                    + "(SELECT id FROM establecimiento WHERE nombre LIKE '%" + establecimiento + "%' LIMIT 1), '" + telefono + "'"
+                    + ")";
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerTelefonos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[15];
+        } else if (action.equals("Editar Telefono")) {
+            String codigo = request.getParameter("codigo");
+            String telefono = request.getParameter("telefono");
+            sql = "UPDATE Telefono SET telefono = '" + telefono + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerTelefonos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[15];
+        } else if (action.equals("Borrar Telefono")) {
+            String codigo = request.getParameter("codigo");
+            String telefono = request.getParameter("telefono");
+            sql = "DELETE FROM Telefono WHERE telefono = '" + telefono + "' AND id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerTelefonos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[15];
         } else if (action.equals("Ubicacion")) {
             obtenerUbicaciones();
+            acceso = direcciones[16];
+        } else if (action.equals("Agregar Ubicacion")) {
+            String nombre = request.getParameter("nombre");
+            sql = "INSERT INTO Ubicacion(nombre) VALUES('" + nombre + "')";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerUbicaciones();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[16];
+        } else if (action.equals("Editar Ubicacion")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Ubicacion SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerUbicaciones();
+            } catch (SQLException e) {
+
+            }
             acceso = direcciones[16];
         }
         request.getSession().setAttribute("resultado", resultado);
@@ -273,8 +525,7 @@ public class Controller extends HttpServlet {
     private void obtenerMunicipios() {
         String sql = "SELECT municipio.id, departamento.nombre AS departamento, municipio.nombre AS municipio\n"
                 + "FROM departamento, municipio\n"
-                + "WHERE municipio.departamento = departamento.id\n"
-                + "LIMIT 100;";
+                + "WHERE municipio.departamento = departamento.id;";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
