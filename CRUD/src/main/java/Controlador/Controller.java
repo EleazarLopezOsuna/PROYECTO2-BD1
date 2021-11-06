@@ -526,13 +526,14 @@ public class Controller extends HttpServlet {
         String sql = "SELECT municipio.id, departamento.nombre AS departamento, municipio.nombre AS municipio\n"
                 + "FROM departamento, municipio\n"
                 + "WHERE municipio.departamento = departamento.id;";
+        System.out.println(sql);
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 municipio = new Municipio();
-                municipio.setCodigo(rs.getString("codigo"));
+                municipio.setCodigo(rs.getString("id"));
                 municipio.setDepartamento(rs.getString("departamento"));
                 municipio.setNombre(rs.getString("municipio"));
                 resultado.add(municipio);
