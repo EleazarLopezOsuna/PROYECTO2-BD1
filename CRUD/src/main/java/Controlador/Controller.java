@@ -5,8 +5,14 @@
  */
 package Controlador;
 
+import Database.Conexion;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +23,30 @@ import javax.servlet.http.HttpServletResponse;
  * @author jared
  */
 public class Controller extends HttpServlet {
-
+    String direcciones[] = {
+        "index.jsp",                    //0
+        "Vistas/index.jsp",             //1
+        "Vistas/Apertura.jsp",          //2
+        "Vistas/Departamento.jsp",      //3
+        "Vistas/Direccion.jsp",         //4
+        "Vistas/Escuela.jsp",           //5
+        "Vistas/Establecimiento.jsp",   //6
+        "Vistas/Estado.jsp",            //7
+        "Vistas/Estatuto.jsp",          //8
+        "Vistas/Genero.jsp",            //9
+        "Vistas/Horario.jsp",           //10
+        "Vistas/Lengua.jsp",            //11
+        "Vistas/Municipio.jsp",         //12
+        "Vistas/Nivel.jsp",             //13
+        "Vistas/Role.jsp",              //14
+        "Vistas/Telefono.jsp",          //15
+        "Vistas/Ubicacion.jsp"          //16
+    };
+    Conexion cn = new Conexion();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    ArrayList<Object> resultado;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,19 +58,6 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controller</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +72,30 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String acceso = "";
+        String action = request.getParameter("accion");
+        String sql;
+        if(action.equals("Login")){
+            String usuario = request.getParameter("txtUsuario");
+            String password = request.getParameter("txtPassword");
+            sql = "SELECT IF((SELECT COUNT(*) FROM Login WHERE usuario = '" + usuario + "' AND "
+                    + "password = '" + password + "') > 0, 1, 0) AS Verificacion";
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+                rs.next();
+                if(rs.getInt("Verificacion") == 1){
+                    acceso = direcciones[1];
+                }else{
+                    acceso = direcciones[0];
+                }
+            } catch (SQLException e) {
+            
+            }
+        }
+        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
     }
 
     /**
