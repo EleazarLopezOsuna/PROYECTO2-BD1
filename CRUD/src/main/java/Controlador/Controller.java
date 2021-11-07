@@ -150,6 +150,54 @@ public class Controller extends HttpServlet {
         } else if (action.equals("Escuela")) {
             obtenerEscuelas();
             acceso = direcciones[5];
+        } else if (action.equals("Agregar")) {
+            String escuela = request.getParameter("escuela");
+            String municipio = request.getParameter("municipio");
+            String ubicacion = request.getParameter("ubicacion");
+            String nivel = request.getParameter("nivel");
+            String horario = request.getParameter("horario");
+            String role = request.getParameter("role");
+            String estatuto = request.getParameter("estatuto");
+            String genero = request.getParameter("genero");
+            String lengua = request.getParameter("lengua");
+            String apertura = request.getParameter("apertura");
+            String estado = request.getParameter("estado");
+            sql = "INSERT INTO Escuela(municipio, ubicacion, nivel, horario, role, estatuto, genero, lengua, apertura, estado, escuela) VALUES("
+                    + "(SELECT id FROM municipio WHERE nombre LIKE '%" + municipio + "%' LIMIT 1), "
+                    + "(SELECT id FROM ubicacion WHERE nombre LIKE '%" + ubicacion + "%' LIMIT 1), "
+                    + "(SELECT id FROM nivel WHERE nombre LIKE '%" + nivel + "%' LIMIT 1), "
+                    + "(SELECT id FROM horario WHERE nombre LIKE '%" + horario + "%' LIMIT 1), "
+                    + "(SELECT id FROM role WHERE nombre LIKE '%" + role + "%' LIMIT 1), "
+                    + "(SELECT id FROM estatuto WHERE nombre LIKE '%" + estatuto + "%' LIMIT 1), "
+                    + "(SELECT id FROM genero WHERE nombre LIKE '%" + genero + "%' LIMIT 1), "
+                    + "(SELECT id FROM lengua WHERE nombre LIKE '%" + lengua + "%' LIMIT 1), "
+                    + "(SELECT id FROM apertura WHERE nombre LIKE '%" + apertura + "%' LIMIT 1), "
+                    + "(SELECT id FROM estado WHERE nombre LIKE '%" + estado + "%' LIMIT 1), "
+                    + "'" + escuela + "')";
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEscuelas();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[5];
+        } else if (action.equals("Editar")) {
+            String codigo = request.getParameter("codigo");
+            String escuela = request.getParameter("escuela");
+            sql = "UPDATE Escuela SET escuela = '" + escuela + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEscuelas();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[5];
         } else if (action.equals("Establecimiento")) {
             obtenerEstablecimientos();
             acceso = direcciones[6];
@@ -543,6 +591,7 @@ public class Controller extends HttpServlet {
                 escuela.setMunicipio(rs.getString("municipio"));
                 escuela.setNivel(rs.getString("nivel"));
                 escuela.setRole(rs.getString("role"));
+                escuela.setEstatuto(rs.getString("estatuto"));
                 escuela.setUbicacion(rs.getString("ubicacion"));
                 resultado.add(escuela);
             }
