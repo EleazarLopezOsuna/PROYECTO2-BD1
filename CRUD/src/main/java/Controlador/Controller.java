@@ -153,6 +153,62 @@ public class Controller extends HttpServlet {
         } else if (action.equals("Establecimiento")) {
             obtenerEstablecimientos();
             acceso = direcciones[6];
+        } else if (action.equals("Agregar Establecimiento")) {
+            String escuela = request.getParameter("escuela");
+            String codigo = request.getParameter("codigo");
+            String establecimiento = request.getParameter("establecimiento");
+            String latlones_2 = request.getParameter("latlones_2");
+            String latlones_3 = request.getParameter("latlones_3");
+            String x_geo = request.getParameter("x_geo");
+            String y_geo = request.getParameter("y_geo");
+            sql = "INSERT INTO Establecimiento(escuela, establecimiento, nombre, latlones_2, latlones_3, x_geo, y_geo) VALUES("
+                    + "(SELECT id FROM escuela WHERE escuela LIKE '%" + escuela + "%' LIMIT 1), '" + codigo + "', '" + establecimiento + "', '" + latlones_2 + "'"
+                    + ", '" + latlones_3 + "', '" + x_geo + "', '" + y_geo + "')";
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstablecimientos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[6];
+        } else if (action.equals("Editar Establecimiento")) {
+            String codigo = request.getParameter("codigo");
+            String nombre = request.getParameter("nombre");
+            sql = "UPDATE Establecimiento SET nombre = '" + nombre + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstablecimientos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[6];
+        } else if (action.equals("Borrar Establecimiento")) {
+            String codigo = request.getParameter("codigo");
+            sql = "DELETE FROM Telefono WHERE establecimiento = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                sql = "DELETE FROM Direccion WHERE establecimiento = " + codigo;
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                sql = "DELETE FROM Establecimiento WHERE id = " + codigo;
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerEstablecimientos();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[6];
         } else if (action.equals("Estado")) {
             obtenerEstados();
             acceso = direcciones[7];
@@ -394,8 +450,7 @@ public class Controller extends HttpServlet {
             acceso = direcciones[15];
         } else if (action.equals("Borrar Telefono")) {
             String codigo = request.getParameter("codigo");
-            String telefono = request.getParameter("telefono");
-            sql = "DELETE FROM Telefono WHERE telefono = '" + telefono + "' AND id = " + codigo;
+            sql = "DELETE FROM Telefono WHERE id = " + codigo;
             System.out.println(sql);
             try {
                 con = cn.getConnection();
@@ -501,7 +556,9 @@ public class Controller extends HttpServlet {
                 + "	establecimiento.latlones_3, establecimiento.x_geo, establecimiento.y_geo\n"
                 + "FROM establecimiento, escuela\n"
                 + "WHERE establecimiento.escuela = escuela.id\n"
+                + "ORDER BY establecimiento.id DESC\n"
                 + "LIMIT 100;";
+        System.out.println(sql);
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -510,6 +567,7 @@ public class Controller extends HttpServlet {
                 establecimiento = new Establecimiento();
                 establecimiento.setEscuela(rs.getString("escuela"));
                 establecimiento.setId(rs.getString("id"));
+                establecimiento.setEstablecimiento(rs.getString("establecimiento"));
                 establecimiento.setLatlones_2(rs.getString("latlones_2"));
                 establecimiento.setLatlones_3(rs.getString("latlones_3"));
                 establecimiento.setNombre(rs.getString("nombre"));

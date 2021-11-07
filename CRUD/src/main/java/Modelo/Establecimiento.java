@@ -13,6 +13,15 @@ public class Establecimiento {
     private String id;
     private String escuela;
     private String nombre;
+    private String establecimiento;
+
+    public String getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(String establecimiento) {
+        this.establecimiento = establecimiento;
+    }
     private String latlones_2;
     private String latlones_3;
     private String x_geo;
