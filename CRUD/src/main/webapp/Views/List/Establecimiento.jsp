@@ -68,7 +68,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm">
-                    <h4>Aperturas</h4>
+                    <h4>Establecimientos</h4>
                 </div>
             </div>
             <div class="row">

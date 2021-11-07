@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <h4>Estatuto</h4>
+                    <h4>Estatutos</h4>
                 </div>
             </div>
             <div class="row">

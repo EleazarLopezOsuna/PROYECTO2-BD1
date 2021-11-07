@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <h4>Genero</h4>
+                    <h4>Generos</h4>
                 </div>
             </div>
             <div class="row">

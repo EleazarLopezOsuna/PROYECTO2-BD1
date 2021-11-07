@@ -147,6 +147,58 @@ public class Controller extends HttpServlet {
         } else if (action.equals("Direccion")) {
             obtenerDirecciones();
             acceso = direcciones[4];
+        } else if (action.equals("Agregar Direccion")) {
+            String establecimiento = request.getParameter("establecimiento");
+            String avenida = request.getParameter("avenida");
+            String calle = request.getParameter("calle");
+            String casa = request.getParameter("casa");
+            String zona = request.getParameter("zona");
+            String descripcion = request.getParameter("descripcion");
+            sql = "INSERT INTO Direccion(establecimiento, avenida, calle, casa, zona, descripcion) VALUES("
+                    + "(SELECT id FROM establecimiento WHERE establecimiento LIKE '%" + establecimiento + "%' LIMIT 1), '" + avenida + "'"
+                    + ", '" + calle + "', '" + casa + "', '" + zona + "', '" + descripcion + "')";
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerDirecciones();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[4];
+        } else if (action.equals("Editar Direccion")) {
+            String codigo = request.getParameter("codigo");
+            String avenida = request.getParameter("avenida");
+            String calle = request.getParameter("calle");
+            String casa = request.getParameter("casa");
+            String zona = request.getParameter("zona");
+            String descripcion = request.getParameter("descripcion");
+            sql = "UPDATE Direccion SET avenida = '" + avenida + "', calle = '" + calle + "', casa = '" + casa + "'"
+                    + ", zona = '" + zona + "', descripcion = '" + descripcion + "' WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerDirecciones();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[4];
+        } else if (action.equals("Borrar Direccion")) {
+            String codigo = request.getParameter("codigo");
+            sql = "DELETE FROM Direccion WHERE id = " + codigo;
+            System.out.println(sql);
+            try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                obtenerDirecciones();
+            } catch (SQLException e) {
+
+            }
+            acceso = direcciones[4];
         } else if (action.equals("Escuela")) {
             obtenerEscuelas();
             acceso = direcciones[5];
@@ -687,7 +739,7 @@ public class Controller extends HttpServlet {
     private void obtenerDirecciones() {
         String sql = "SELECT direccion.id, establecimiento.establecimiento, avenida, calle, "
                 + "casa, zona, descripcion FROM direccion, establecimiento WHERE "
-                + "direccion.establecimiento = establecimiento.id LIMIT 100 ORDER BY direccion.id";
+                + "direccion.establecimiento = establecimiento.id ORDER BY direccion.id DESC LIMIT 100";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

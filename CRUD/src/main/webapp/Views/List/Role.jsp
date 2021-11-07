@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <h4>Role</h4>
+                    <h4>Roles</h4>
                 </div>
             </div>
             <div class="row">

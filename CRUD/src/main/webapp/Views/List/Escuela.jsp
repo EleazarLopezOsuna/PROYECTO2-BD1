@@ -68,7 +68,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm">
-                    <h4>Escuela</h4>
+                    <h4>Escuelas</h4>
                 </div>
             </div>
             <div class="row">
